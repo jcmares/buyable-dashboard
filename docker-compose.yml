@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: buyable_dashboard
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://buyable_test:LpswBUaYdqvpd5dvpCUex8rkDvXLc7@host.docker.internal:5432/buyable_test
+      - DATABASE_SCHEMA=public
+      - DATABASE_SSL=false
+      - FOREST_AUTH_SECRET=55e1cb5d55bd872d3e7f42acfbbcc16ca34aedaca9283838e0fe7eb74a837691e6837eef009fed1239c6cdb75b26afd7
+      - FOREST_ENV_SECRET=ce737023c328124a064ccd0e218d2b01cca938bb1b815c434e04d052a12a7c00
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app
